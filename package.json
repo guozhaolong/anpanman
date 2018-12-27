@@ -1,0 +1,39 @@
+{
+  "name": "anpanman",
+  "main": "node_modules/expo/AppEntry.js",
+  "private": true,
+  "scripts": {
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "eject": "expo eject",
+    "server": "nodemon mock/server.js"
+  },
+  "dependencies": {
+    "@expo/vector-icons": "^8.0.0",
+    "dva-core": "^1.4.0",
+    "expo": "^31.0.2",
+    "isomorphic-fetch": "^2.2.1",
+    "qs": "^6.6.0",
+    "react": "16.5.0",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-31.0.0.tar.gz",
+    "react-navigation": "^3.0.9",
+    "react-navigation-redux-helpers": "^2.0.8",
+    "react-redux": "^6.0.0",
+    "json-server": "^0.14.1",
+    "mockjs": "^1.0.1-beta3",
+    "nodemon": "^1.18.9"
+  },
+  "devDependencies": {
+    "babel-preset-expo": "^5.0.0",
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.11.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-babel": "^5.3.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.2",
+    "eslint-plugin-markdown": "^1.0.0-rc.1",
+    "eslint-plugin-react": "^7.11.1",
+    "eslint-tinker": "^0.5.0"
+  }
+}
