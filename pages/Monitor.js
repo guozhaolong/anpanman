@@ -4,8 +4,11 @@ import { connect } from 'react-redux'
 import { NavigationActions } from 'react-navigation'
 import { FontAwesome } from '@expo/vector-icons'
 import { Button } from '../components/Button'
-const {width,height} = Dimensions.get('window');
+
 import { formatStringWithHtml } from '../utils/format'
+import FilterBar from "../components/FilterBar";
+
+const {width,height} = Dimensions.get('window');
 
 const AssetItem = ({ item }) => {
   return <TouchableOpacity>
@@ -33,28 +36,29 @@ class Monitor extends Component {
   }
 
   render() {
-    return (
-      <View style={styles.container}>
-        <FlatList
-          style={{height: height - 100,width: width}}
-          data={this.props.items}
-          onEndReached={() => {
-            // dispatch({type:'setValue',items:this.props.items.concat(article.items)})
-          }}
-          keyExtractor={item => item.id+''}
-          refreshControl={
-            <RefreshControl
-              refreshing={this.props.loading}
-              tintColor="gray"
-              title="正在刷新"
-              onRefresh={() => {
-                // let items =this.props.items.concat(article.items);
-                // dispatch({type:'setValue',items:items})
-              }}/>}
-          onEndReachedThreshold={200}
-          renderItem={({item}) => <AssetItem item={item} dispatch={this.props.dispatch}/>}
-        />
-      </View>
+    return (<FilterBar>
+        <View style={styles.container}>
+          <FlatList
+            style={{width: width,}}
+            data={this.props.items}
+            onEndReached={() => {
+              // dispatch({type:'setValue',items:this.props.items.concat(article.items)})
+            }}
+            keyExtractor={item => item.id+''}
+            refreshControl={
+              <RefreshControl
+                refreshing={this.props.loading}
+                tintColor="gray"
+                title="正在刷新"
+                onRefresh={() => {
+                  // let items =this.props.items.concat(article.items);
+                  // dispatch({type:'setValue',items:items})
+                }}/>}
+            onEndReachedThreshold={200}
+            renderItem={({item}) => <AssetItem item={item} dispatch={this.props.dispatch}/>}
+          />
+        </View>
+      </FilterBar>
     )
   }
 }
@@ -64,7 +68,6 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    width: width,
   },
   item: {
     flexDirection: 'row',
