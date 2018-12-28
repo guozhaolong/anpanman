@@ -1,8 +1,9 @@
 import React, { PureComponent } from 'react'
-import { BackHandler, Animated, Easing } from 'react-native'
+import {BackHandler, Animated, Easing, Dimensions} from 'react-native'
 import {
   createStackNavigator,
   createBottomTabNavigator,
+  createDrawerNavigator,
   NavigationActions,
 } from 'react-navigation'
 import {
@@ -17,6 +18,9 @@ import Home from './pages/Home'
 import Monitor from './pages/Monitor'
 import WO from './pages/WO'
 import Video from './pages/Video'
+import AssetFilter from "./components/AssetFilter";
+
+const {width,height} = Dimensions.get('window');
 
 const HomeNavigator = createBottomTabNavigator({
   Home: { screen: Home },
@@ -49,13 +53,17 @@ HomeNavigator.navigationOptions = ({ navigation }) => {
   }
 }
 
-const MainNavigator = createStackNavigator(
+const MainNavigator = createDrawerNavigator(
   {
     HomeNavigator: { screen: HomeNavigator },
   },
   {
-    headerMode: 'float',
-  },
+    drawerPosition:'right',
+    drawerWidth: width-40,
+    contentComponent: props => {
+      return <AssetFilter />
+    }
+  }
 )
 
 const AppNavigator = createStackNavigator(

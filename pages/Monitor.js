@@ -36,7 +36,7 @@ class Monitor extends Component {
   }
 
   render() {
-    return (<FilterBar>
+    return (<FilterBar >
         <View style={styles.container}>
           <FlatList
             style={{width: width,}}

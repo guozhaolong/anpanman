@@ -39,40 +39,35 @@ class Home extends Component {
   }
 
   render() {
+
     return (
-      <FilterBar>
-        <View style={styles.container}>
-          <FlatList
-            style={{width: width,}}
-            data={this.props.items}
-            onEndReached={() => {
-              // dispatch({type:'setValue',items:this.props.items.concat(article.items)})
-            }}
-            keyExtractor={item => item.id+''}
-            refreshControl={
-              <RefreshControl
-                refreshing={this.props.loading}
-                tintColor="gray"
-                title="正在刷新"
-                onRefresh={() => {
-                  // let items =this.props.items.concat(article.items);
-                  // dispatch({type:'setValue',items:items})
-                }}/>}
-            onEndReachedThreshold={200}
-            renderItem={({item}) => <AssetItem item={item} dispatch={this.props.dispatch}/>}
-          />
-        </View>
-      </FilterBar>
+      <View style={styles.container}>
+        <FilterBar navigation={this.props.navigation}/>
+        <FlatList
+          style={{width: width,}}
+          data={this.props.items}
+          onEndReached={() => {
+            // dispatch({type:'setValue',items:this.props.items.concat(article.items)})
+          }}
+          keyExtractor={item => item.id+''}
+          refreshControl={
+            <RefreshControl
+              refreshing={this.props.loading}
+              tintColor="gray"
+              title="正在刷新"
+              onRefresh={() => {
+                // let items =this.props.items.concat(article.items);
+                // dispatch({type:'setValue',items:items})
+              }}/>}
+          onEndReachedThreshold={200}
+          renderItem={({item}) => <AssetItem item={item} dispatch={this.props.dispatch}/>}
+        />
+      </View>
     )
   }
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
   container: {
     flex: 1,
     alignItems: 'center',
