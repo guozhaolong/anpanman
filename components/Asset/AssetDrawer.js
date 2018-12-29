@@ -1,13 +1,13 @@
-import {Component} from "react";
+import { Component } from "react";
 import {Dimensions, StyleSheet, Text, TouchableOpacity, View, ScrollView} from "react-native";
 import {FontAwesome} from "@expo/vector-icons";
-import Tag from "./Tag";
+import Tag from "../Common/Tag";
 import React from "react";
 import {Constants} from "expo";
 
 const {width,height} = Dimensions.get('window');
 
-class AssetFilter extends Component {
+class AssetDrawer extends Component {
   static navigationOptions = {
     drawerLabel: '资产',
   };
@@ -101,12 +101,8 @@ const styles = StyleSheet.create({
     marginTop: Constants.statusBarHeight,
     backgroundColor: '#fff',
   },
-  filter:{
-    padding: 10,
-  },
   btnGroup:{
     flexDirection:'row',
-    height: 60,
   },
   resetBtn:{
     shadowColor: '#ccc',
@@ -115,9 +111,9 @@ const styles = StyleSheet.create({
     shadowOffset: {width:0,height:-1},
     backgroundColor: '#fff',
     width:(width-40)/2,
-    height: 60,
     alignItems:'center',
     justifyContent: 'center',
+    height: 60,
   },
   resetBtnText:{
     fontSize: 16,
@@ -131,14 +127,17 @@ const styles = StyleSheet.create({
     shadowOffset: {width:0,height:-1},
     backgroundColor: '#F5222D',
     width:(width-40)/2,
-    height: 60,
     alignItems:'center',
     justifyContent: 'center',
+    height: 60,
   },
   okBtnText:{
     fontSize: 16,
     fontWeight: '400',
     color:'white',
+  },
+  filter:{
+    padding: 10,
   },
   filterContainer:{
     marginBottom: 20,
@@ -172,4 +171,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default AssetFilter
+export default AssetDrawer

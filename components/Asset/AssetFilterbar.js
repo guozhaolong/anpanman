@@ -1,14 +1,10 @@
-import { MenuProvider, Menu, MenuOptions, MenuOption, MenuTrigger } from 'react-native-popup-menu';
 import {Dimensions, StyleSheet, Text, View, TouchableOpacity, Image} from "react-native";
 import { Constants } from 'expo';
 import { FontAwesome } from '@expo/vector-icons'
 import React, {Component} from "react";
-import Drawer from 'react-native-drawer'
-import Tag from "./Tag";
-
 const {width,height} = Dimensions.get('window');
 
-class FilterBar extends Component {
+class AssetFilterbar extends Component {
 
   render() {
     return <View style={styles.menu}>
@@ -53,4 +49,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default FilterBar
+export default AssetFilterbar

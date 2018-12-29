@@ -18,8 +18,7 @@ import Home from './pages/Home'
 import Monitor from './pages/Monitor'
 import WO from './pages/WO'
 import Video from './pages/Video'
-import AssetFilter from "./components/AssetFilter";
-import F2Test from './pages/F2Test'
+import AssetDrawer from "./components/Asset/AssetDrawer";
 
 const {width, height} = Dimensions.get('window');
 
@@ -27,7 +26,7 @@ const HomeNavigator = createBottomTabNavigator({
   Home: {screen: Home},
   Monitor: {screen: Monitor},
   WO: {screen: WO},
-  Video: {screen: F2Test},
+  Video: {screen: Video},
 })
 
 HomeNavigator.navigationOptions = ({navigation}) => {
@@ -62,7 +61,7 @@ const MainNavigator = createDrawerNavigator(
     drawerPosition: 'right',
     drawerWidth: width - 40,
     contentComponent: props => {
-      return <AssetFilter/>
+      return <AssetDrawer/>
     }
   }
 )

@@ -3,7 +3,7 @@ import { StyleSheet, View } from 'react-native'
 import { connect } from 'react-redux'
 import { NavigationActions } from 'react-navigation'
 import { FontAwesome } from '@expo/vector-icons'
-import { Button } from '../components/Button'
+import { Button } from '../components/Common/Button'
 
 @connect(({ asset }) => ({ ...asset }))
 class Home extends Component {
