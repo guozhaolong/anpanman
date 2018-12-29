@@ -1,50 +1,51 @@
-import {StyleSheet, Text, View,} from "react-native"
+import {Dimensions, StyleSheet, View, ScrollView,Text,TextInput,} from "react-native"
 import React, {Component} from "react"
-import {FontAwesome} from "@expo/vector-icons"
-import Button from "../Common/Button"
-
+import Topbar from "../Common/Topbar"
+import Chart from "../Common/Chart"
+const {width,height} = Dimensions.get('window')
 class AssetDetail extends Component {
-  static navigationOptions = {}
 
   render() {
+    const {id,title,assetnum,model,amount,unit,manufacturer,serial,createdate,rfid,status} = this.props.navigation.state.params
     return (
-      <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-        <Text style={{fontSize: 30}}>This is a modal!</Text>
-        <Button onPress={() => this.props.navigation.goBack()} title="Dismiss"/>
+      <View>
+        <Topbar title={title} leftText="返回" leftIcon="angle-left" leftClick={()=>this.props.navigation.goBack()}/>
+        <ScrollView style={styles.container}>
+          <View style={styles.inputItem}>
+            <Text style={styles.label}>设备编号</Text>
+            <TextInput style={styles.input} value={assetnum}/>
+          </View>
+          <View style={styles.inputItem}>
+            <Text style={styles.label}>序列号</Text>
+            <TextInput style={styles.input} value={serial}/>
+          </View>
+          <Chart />
+        </ScrollView>
       </View>
     )
   }
 }
 const styles = StyleSheet.create({
-  item: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#fcfcfc',
+  container: {
     padding: 10,
   },
-  cover: {
-    width: 88,
-    height: 66,
-    marginRight: 10
-  },
-  title: {
-    textAlign: 'left',
-    fontSize: 18,
-    color: '#000',
-  },
-  content: {
-    paddingTop:5,
-    fontSize: 12,
-    color: '#999',
-  },
-  itemRightContent: {
-    flex: 1,
-    flexDirection: 'column',
+  inputItem: {
+    flexDirection: 'row',
+    borderBottomColor:'#f5f5f5',
     borderBottomWidth: 1,
-    borderBottomColor: '#ddd',
-    padding:12,
+    height: 44,
+    alignItems: 'center',
   },
+  label: {
+    fontSize: 16,
+    opacity: .8,
+    width: 80,
+  },
+  input: {
+    fontSize: 16,
+    height:44,
+    width: width-100,
+  }
 })
 
 export default AssetDetail

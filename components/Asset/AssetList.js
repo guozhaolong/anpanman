@@ -4,7 +4,7 @@ import {formatStringWithHtml} from "../../utils/format"
 import {NavigationActions,} from "react-navigation"
 
 const AssetItem = ({ item,dispatch, }) => {
-  return <TouchableOpacity onPress={()=>dispatch(NavigationActions.navigate({ routeName: 'AssetDetail',params: {} }))}>
+  return <TouchableOpacity onPress={()=>dispatch(NavigationActions.navigate({ routeName: 'AssetDetail',params: item }))}>
     <View style={styles.item}>
       <Image style={styles.cover} source={{uri: item.cover}} />
       <View style={styles.itemRightContent}>
