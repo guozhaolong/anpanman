@@ -3,10 +3,10 @@ import { StyleSheet, View, Dimensions } from 'react-native'
 import { connect } from 'react-redux'
 import { FontAwesome } from '@expo/vector-icons'
 
-import AssetFilterbar from "../components/Asset/AssetFilterbar";
-import AssetList from "../components/Asset/AssetList";
+import AssetFilterbar from "../components/Asset/AssetFilterbar"
+import AssetList from "../components/Asset/AssetList"
 
-const {width,height} = Dimensions.get('window');
+const {width,height} = Dimensions.get('window')
 
 
 @connect(({ asset }) => ({ ...asset }))
@@ -25,7 +25,7 @@ class Monitor extends Component {
   render() {
     return (
         <View style={styles.container}>
-          <AssetFilterbar navigation={this.props.navigation}/>
+          <AssetFilterbar/>
           <AssetList style={{width:width}} items={this.props.items} loading={this.props.loading} dispatch={this.props.dispatch}/>
         </View>
     )

@@ -3,6 +3,8 @@ import {StyleSheet, View, Dimensions } from 'react-native'
 import { connect } from 'react-redux'
 import { NavigationActions } from 'react-navigation'
 import { FontAwesome } from '@expo/vector-icons'
+import AssetFilterbar from "../components/Asset/AssetFilterbar"
+import AssetList from "../components/Asset/AssetList"
 
 
 const {width,height} = Dimensions.get('window');
@@ -28,6 +30,8 @@ class Home extends Component {
 
     return (
       <View style={styles.container}>
+        <AssetFilterbar/>
+        <AssetList style={{width:width}} items={this.props.items} loading={this.props.loading} dispatch={this.props.dispatch}/>
       </View>
     )
   }

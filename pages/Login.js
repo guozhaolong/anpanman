@@ -29,9 +29,7 @@ class Login extends Component {
           <Button onPress={this.onLogin}  title={"Login"}/>
         )}
         {!fetching && (
-          <Touchable style={styles.close} onPress={this.onClose}>
-            <FontAwesome name="close" size={32} color="green"/>
-          </Touchable>
+          <Button onPress={this.onClose}  title={"Close"}/>
         )}
       </View>
     )

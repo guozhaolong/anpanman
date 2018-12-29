@@ -2,8 +2,8 @@ import Button from "./Button";
 import {StyleSheet} from "react-native";
 import React from "react";
 
-export const Tag = ({ title, checked,style }) => (
-  <Button title={title} style={[checked?styles.checked:styles.tag,style]} textStyle={checked?styles.textChecked:styles.tagText}/>
+export const Tag = ({ title, checked,style,...rest }) => (
+  <Button title={title} style={[checked?styles.checked:styles.tag,style]} textStyle={checked?styles.textChecked:styles.tagText} {...rest}/>
 )
 
 

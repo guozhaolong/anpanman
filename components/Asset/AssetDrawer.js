@@ -8,9 +8,6 @@ import {Constants} from "expo";
 const {width,height} = Dimensions.get('window');
 
 class AssetDrawer extends Component {
-  static navigationOptions = {
-    drawerLabel: '资产',
-  };
 
   state = {
     showAllLocations: false,
@@ -103,16 +100,16 @@ const styles = StyleSheet.create({
   },
   btnGroup:{
     flexDirection:'row',
-  },
-  resetBtn:{
     shadowColor: '#ccc',
     shadowRadius: 1,
     shadowOpacity: .3,
     shadowOffset: {width:0,height:-1},
+  },
+  resetBtn:{
+    paddingVertical: 12,
     backgroundColor: '#fff',
     width:(width-40)/2,
     alignItems:'center',
-    justifyContent: 'center',
     height: 60,
   },
   resetBtnText:{
@@ -121,14 +118,10 @@ const styles = StyleSheet.create({
     color:'gray',
   },
   okBtn:{
-    shadowColor: '#ccc',
-    shadowRadius: 1,
-    shadowOpacity: .3,
-    shadowOffset: {width:0,height:-1},
+    paddingVertical: 12,
     backgroundColor: '#F5222D',
     width:(width-40)/2,
     alignItems:'center',
-    justifyContent: 'center',
     height: 60,
   },
   okBtnText:{

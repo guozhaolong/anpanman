@@ -15,7 +15,7 @@ class WO extends Component {
   }
 
   gotoDetail = () => {
-    this.props.dispatch(NavigationActions.navigate({ routeName: 'Detail' }))
+    this.props.dispatch(NavigationActions.navigate({ routeName: 'AssetDetail' }))
   }
 
   render() {

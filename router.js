@@ -18,7 +18,8 @@ import Home from './pages/Home'
 import Monitor from './pages/Monitor'
 import WO from './pages/WO'
 import Video from './pages/Video'
-import AssetDrawer from "./components/Asset/AssetDrawer";
+import AssetDrawer from "./components/Asset/AssetDrawer"
+import AssetDetail from './components/Asset/AssetDetail'
 
 const {width, height} = Dimensions.get('window');
 
@@ -70,6 +71,7 @@ const AppNavigator = createStackNavigator(
   {
     Main: {screen: MainNavigator},
     Login: {screen: Login},
+    AssetDetail: {screen: AssetDetail},
   },
   {
     headerMode: 'none',

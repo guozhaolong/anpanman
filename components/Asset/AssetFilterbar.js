@@ -1,8 +1,10 @@
-import {Dimensions, StyleSheet, Text, View, TouchableOpacity, Image} from "react-native";
-import { Constants } from 'expo';
+import {Dimensions, StyleSheet, Text, View, TouchableOpacity, Image} from "react-native"
+import { Constants } from 'expo'
 import { FontAwesome } from '@expo/vector-icons'
-import React, {Component} from "react";
-const {width,height} = Dimensions.get('window');
+import React, {Component} from 'react'
+import { withNavigation } from 'react-navigation'
+
+const {width,height} = Dimensions.get('window')
 
 class AssetFilterbar extends Component {
 
@@ -49,4 +51,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default AssetFilterbar
+export default withNavigation(AssetFilterbar)

@@ -1,9 +1,10 @@
-import {FlatList, Image, RefreshControl, StyleSheet, Text, TouchableOpacity, View,} from "react-native";
-import React from "react";
-import {formatStringWithHtml} from "../../utils/format";
+import {FlatList, Image, RefreshControl, StyleSheet, Text, TouchableOpacity, View,} from "react-native"
+import React from "react"
+import {formatStringWithHtml} from "../../utils/format"
+import {NavigationActions,} from "react-navigation"
 
-const AssetItem = ({ item }) => {
-  return <TouchableOpacity>
+const AssetItem = ({ item,dispatch, }) => {
+  return <TouchableOpacity onPress={()=>dispatch(NavigationActions.navigate({ routeName: 'AssetDetail',params: {} }))}>
     <View style={styles.item}>
       <Image style={styles.cover} source={{uri: item.cover}} />
       <View style={styles.itemRightContent}>
@@ -14,12 +15,12 @@ const AssetItem = ({ item }) => {
   </TouchableOpacity>
 };
 
-export const AssetList = ({ items, loading, dispatch, style }) => (
+export const AssetList = ({ items, loading, dispatch,navigation, style }) => (
   <FlatList
     style={style}
     data={items}
     onEndReached={() => {
-      // dispatch({type:'setValue',items:this.props.items.concat(article.items)})
+
     }}
     keyExtractor={item => item.id+''}
     refreshControl={
@@ -28,11 +29,10 @@ export const AssetList = ({ items, loading, dispatch, style }) => (
         tintColor="gray"
         title="正在刷新"
         onRefresh={() => {
-          // let items =this.props.items.concat(article.items);
-          // dispatch({type:'setValue',items:items})
+
         }}/>}
     onEndReachedThreshold={200}
-    renderItem={({item}) => <AssetItem item={item} dispatch={dispatch}/>}
+    renderItem={({item}) => <AssetItem item={item} dispatch={dispatch} />}
   />
 )
 

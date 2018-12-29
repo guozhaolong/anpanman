@@ -15,7 +15,7 @@ class Home extends Component {
   }
 
   gotoDetail = () => {
-    this.props.dispatch(NavigationActions.navigate({ routeName: 'Detail' }))
+    this.props.dispatch(NavigationActions.navigate({ routeName: 'Login' }))
   }
 
   render() {
