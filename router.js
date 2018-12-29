@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react'
+import React, {PureComponent} from 'react'
 import {BackHandler, Animated, Easing, Dimensions} from 'react-native'
 import {
   createStackNavigator,
@@ -11,7 +11,7 @@ import {
   createReactNavigationReduxMiddleware,
   createNavigationReducer,
 } from 'react-navigation-redux-helpers'
-import { connect } from 'react-redux'
+import {connect} from 'react-redux'
 
 import Login from './pages/Login'
 import Home from './pages/Home'
@@ -19,18 +19,19 @@ import Monitor from './pages/Monitor'
 import WO from './pages/WO'
 import Video from './pages/Video'
 import AssetFilter from "./components/AssetFilter";
+import F2Test from './pages/F2Test'
 
-const {width,height} = Dimensions.get('window');
+const {width, height} = Dimensions.get('window');
 
 const HomeNavigator = createBottomTabNavigator({
-  Home: { screen: Home },
-  Monitor: { screen: Monitor },
-  WO: { screen: WO },
-  Video: { screen: Video },
+  Home: {screen: Home},
+  Monitor: {screen: Monitor},
+  WO: {screen: WO},
+  Video: {screen: F2Test},
 })
 
-HomeNavigator.navigationOptions = ({ navigation }) => {
-  const { routeName } = navigation.state.routes[navigation.state.index]
+HomeNavigator.navigationOptions = ({navigation}) => {
+  const {routeName} = navigation.state.routes[navigation.state.index]
   if (routeName === 'Home') {
     return {
       headerTitle: '主页',
@@ -55,21 +56,21 @@ HomeNavigator.navigationOptions = ({ navigation }) => {
 
 const MainNavigator = createDrawerNavigator(
   {
-    HomeNavigator: { screen: HomeNavigator },
+    HomeNavigator: {screen: HomeNavigator},
   },
   {
-    drawerPosition:'right',
-    drawerWidth: width-40,
+    drawerPosition: 'right',
+    drawerWidth: width - 40,
     contentComponent: props => {
-      return <AssetFilter />
+      return <AssetFilter/>
     }
   }
 )
 
 const AppNavigator = createStackNavigator(
   {
-    Main: { screen: MainNavigator },
-    Login: { screen: Login },
+    Main: {screen: MainNavigator},
+    Login: {screen: Login},
   },
   {
     headerMode: 'none',
@@ -84,8 +85,8 @@ const AppNavigator = createStackNavigator(
         timing: Animated.timing,
       },
       screenInterpolator: (sceneProps) => {
-        const { layout, position, scene } = sceneProps
-        const { index } = scene
+        const {layout, position, scene} = sceneProps
+        const {index} = scene
 
         const height = layout.initHeight
         const translateY = position.interpolate({
@@ -98,7 +99,7 @@ const AppNavigator = createStackNavigator(
           outputRange: [0, 1, 1],
         })
 
-        return { opacity, transform: [{ translateY }] }
+        return {opacity, transform: [{translateY}]}
       },
     }),
   },
@@ -124,7 +125,7 @@ function getActiveRouteName(navigationState) {
   return route.routeName
 }
 
-@connect(({ app, router }) => ({ app, router }))
+@connect(({app, router}) => ({app, router}))
 class Router extends PureComponent {
   componentWillMount() {
     BackHandler.addEventListener('hardwareBackPress', this.backHandle)
@@ -148,9 +149,9 @@ class Router extends PureComponent {
   }
 
   render() {
-    const { dispatch, router } = this.props
+    const {dispatch, router} = this.props
 
-    return <App dispatch={dispatch} state={router} />
+    return <App dispatch={dispatch} state={router}/>
   }
 }
 
