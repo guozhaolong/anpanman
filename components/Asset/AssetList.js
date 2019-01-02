@@ -29,7 +29,7 @@ export const AssetList = ({ items, loading, dispatch,navigation, style }) => (
         tintColor="gray"
         title="正在刷新"
         onRefresh={() => {
-
+          dispatch({type:'asset/fetch'})
         }}/>}
     onEndReachedThreshold={200}
     renderItem={({item}) => <AssetItem item={item} dispatch={dispatch} />}

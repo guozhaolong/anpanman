@@ -18,9 +18,7 @@ export async function asset() {
     }]
   })
   return new Promise((resolve,reject)=> {
-    setTimeout(()=> {
-      resolve({list:data.asset,total:500});
-    }, 200)
+    resolve({list:data.asset,total:500})
   })
 }
 
