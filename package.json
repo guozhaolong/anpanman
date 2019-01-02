@@ -10,7 +10,6 @@
     "server": "nodemon mock/server.js"
   },
   "dependencies": {
-    "@antv/f2": "^3.1.4-beta.1",
     "@expo/vector-icons": "^8.0.0",
     "dva-core": "^1.4.0",
     "expo": "^31.0.2",
@@ -22,7 +21,6 @@
     "qs": "^6.6.0",
     "react": "16.5.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-31.0.0.tar.gz",
-    "react-native-canvas": "^0.1.20",
     "react-navigation": "^3.0.9",
     "react-navigation-redux-helpers": "^2.0.8",
     "react-redux": "^6.0.0",
