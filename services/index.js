@@ -2,18 +2,14 @@ import qs from 'qs'
 import request from '../utils/request'
 import { REST_URL } from '../constants'
 
-export async function find(params) {
-  return request(`${REST_URL}/user?${qs.stringify(params)}`)
+export async function get(url,params) {
+  return request(`${REST_URL}/${url}?${qs.stringify(params)}`)
 }
 
-export async function findOne(id) {
-  return request(`${REST_URL}/user${id}`)
-}
-
-export async function save(params) {
-  return request(`${REST_URL}/user`, {
+export async function post(url,params) {
+  return request(`${REST_URL}/${url}`, {
     credentials: 'include',
-    method: params.id ? 'POST' : 'PUT',
+    method: 'POST',
     headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json; charset=utf-8',
@@ -22,8 +18,20 @@ export async function save(params) {
   })
 }
 
-export async function remove(params) {
-  return request(`${REST_URL}/user`, {
+export async function put(url,params) {
+  return request(`${REST_URL}/${url}`, {
+    credentials: 'include',
+    method: 'PUT',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json; charset=utf-8',
+    },
+    body: JSON.stringify(params),
+  })
+}
+
+export async function del(url,params) {
+  return request(`${REST_URL}/${url}`, {
     credentials: 'include',
     method: 'DELETE',
     headers: {
@@ -31,17 +39,5 @@ export async function remove(params) {
       'Content-Type': 'application/json; charset=utf-8',
     },
     body: JSON.stringify(params),
-  })
-}
-
-export async function login(params) {
-  return request(`${REST_URL}/login`, {
-    credentials: 'include',
-    method: 'POST',
-    headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json; charset=utf-8',
-    },
-    body: qs.stringify(params),
   })
 }

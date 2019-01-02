@@ -1,6 +1,6 @@
 import createModel from './index'
 
-export default createModel('asset', {
+export default createModel('kpi', {
 
   state: {},
 
@@ -10,6 +10,7 @@ export default createModel('asset', {
     },
   },
   effects: {
+
   },
   reducers: {
     findOne(state, action) {

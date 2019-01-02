@@ -22,6 +22,16 @@ module.exports = function () {
       password: '@cword(50)',
       avatar: '@image(200x100,@color,@cword(2))',
     }],
+    'kpi|90':[{
+      'name|1':['命中率','吞吐率','成功率'],
+      x:'@date(yyyy-MM-dd)',
+      y:'@integer(10,999)',
+    }],
+    'login':{
+      username: '@cword(8,20)',
+      password: '@cword(50)',
+      avatar: '@image(200x100,@color,@cword(2))',
+    }
   })
   return data
 }

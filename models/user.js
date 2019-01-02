@@ -1,5 +1,5 @@
 import createModel from './index'
-import userAPI from '../services/user'
+import {post} from "../services"
 
 export default createModel('user', {
 
@@ -12,7 +12,10 @@ export default createModel('user', {
   },
   effects: {
     * login({ payload }, { select, call, put }) {
-
+      const data = yield call(post, 'login', {username:payload.username,password:payload.password})
+      if (data) {
+        console.log(data)
+      }
     },
   },
   reducers: {

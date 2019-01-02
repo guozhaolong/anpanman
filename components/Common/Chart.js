@@ -16,34 +16,20 @@ import F2 from "@antv/f2/lib/core"
 const { width,height } = Dimensions.get("window")
 class Chart extends Component {
 
+  static defaultProps = {
+    data: [],
+  };
+
   handleCanvas = canvas => {
     if(!canvas)
       return
-    const data = []
-    for(let i=0;i<30;i++) {
-      data.push({
-        name: '命中率',
-        x: moment().add(-i,'d').format("YYYY-MM-DD"),
-        y: Math.round(Math.random()*100)
-      })
-      data.push({
-        name: '吞吐率',
-        x: moment().add(-i,'d').format("YYYY-MM-DD"),
-        y: Math.round(Math.random()*100)
-      })
-      data.push({
-        name: '成功率',
-        x: moment().add(-i, 'd').format("YYYY-MM-DD"),
-        y: Math.round(Math.random() * 100)
-      })
-    }
     const chart = new F2.Chart({
       el: canvas,
       width: width-40,
       height: width,
       padding: "auto"
     })
-    chart.source(data, {
+    chart.source(this.props.data, {
       'x': {
         type: 'timeCat',
         range: [0, 1],

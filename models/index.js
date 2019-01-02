@@ -1,3 +1,5 @@
+import { get } from '../services'
+
 export default function createModel(name, obj) {
   const { state, effects, subscriptions, reducers } = obj
   return {
@@ -26,7 +28,8 @@ export default function createModel(name, obj) {
             orderBy,
           }
         })
-        yield put({ type: `${name}/list`, payload: q })
+        const data = yield call(get, name, q)
+        if (data) yield put({ type: 'setValue', payload: { items: data.list, total: data.total } })
       },
     }, effects),
     reducers: Object.assign({

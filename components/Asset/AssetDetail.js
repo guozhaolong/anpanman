@@ -2,8 +2,15 @@ import {Dimensions, StyleSheet, View, ScrollView,Text,TextInput,} from "react-na
 import React, {Component} from "react"
 import Topbar from "../Common/Topbar"
 import Chart from "../Common/Chart"
+import { connect } from 'react-redux'
 const {width,height} = Dimensions.get('window')
+
+@connect(({ kpi }) => ({ ...kpi }))
 class AssetDetail extends Component {
+
+  componentDidMount() {
+    this.props.dispatch({type:'kpi/fetch'})
+  }
 
   render() {
     const {id,title,assetnum,model,amount,unit,manufacturer,serial,createdate,rfid,status} = this.props.navigation.state.params
@@ -19,7 +26,7 @@ class AssetDetail extends Component {
             <Text style={styles.label}>序列号</Text>
             <TextInput style={styles.input} value={serial}/>
           </View>
-          <Chart />
+          <Chart data={this.props.items}/>
         </ScrollView>
       </View>
     )
