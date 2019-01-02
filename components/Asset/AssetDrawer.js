@@ -4,6 +4,7 @@ import {FontAwesome} from "@expo/vector-icons";
 import Tag from "../Common/Tag";
 import React from "react";
 import {Constants} from "expo";
+import {withNavigation} from "react-navigation";
 
 const {width,height} = Dimensions.get('window');
 
@@ -84,7 +85,7 @@ class AssetDrawer extends Component {
         <TouchableOpacity onPress={() => {}} style={styles.resetBtn}>
           <Text style={styles.resetBtnText}>重置</Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => {}} style={styles.okBtn}>
+        <TouchableOpacity onPress={() => {this.props.navigation.closeDrawer()}} style={styles.okBtn}>
           <Text style={styles.okBtnText}>确定</Text>
         </TouchableOpacity>
       </View>
@@ -164,4 +165,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default AssetDrawer
+export default withNavigation(AssetDrawer)
