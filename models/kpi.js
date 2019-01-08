@@ -1,6 +1,5 @@
 import createModel from './index'
 import {kpi} from "../services/simulator";
-
 export default createModel('kpi', {
 
   state: {},
@@ -21,8 +20,8 @@ export default createModel('kpi', {
           orderBy,
         }
       })
-      const data = yield call(kpi, name, q)
-      if (data) yield put({ type: 'setValue', payload: { items: data.list, total: data.total } })
+      const data = yield call(kpi,q)
+      if (data) yield put({ type: 'setValue', payload: { items: data.list, total: 500 } })
     },
   },
   reducers: {

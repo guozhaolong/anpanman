@@ -1,4 +1,4 @@
-import Mock from 'mockjs'
+const Mock = require('mockjs')
 
 export async function asset() {
   const data = Mock.mock({
@@ -18,16 +18,18 @@ export async function asset() {
     }]
   })
   return new Promise((resolve,reject)=> {
-    resolve({list:data.asset,total:500})
+    setTimeout(()=> {
+      resolve({list:data.asset,total:500});
+    }, 200)
   })
 }
 
 export async function kpi() {
   const data = Mock.mock({
-    'kpi|90':[{
-      'name|1':['命中率','吞吐率','成功率'],
-      x:'@date(yyyy-MM-dd)',
-      y:'@integer(10,999)',
+    'kpi|100':[{
+      'name|1':['iops','kbps','rate'],
+      x:'@date',
+      y:'@integer(10,20)',
     }],
   })
   return new Promise((resolve,reject)=> {
@@ -35,4 +37,26 @@ export async function kpi() {
       resolve({list:data.kpi,total:500});
     }, 200)
   })
+}
+
+export async function login(params){
+  let user
+  if('admin'===params.loginid && '123'===params.password) {
+    user = Mock.mock({
+      loginid:params.loginid,
+      name:'@cname',
+      'dept':'数据中心',
+      'status':'正常',
+      'createtime':'@datetime("yyyy-MM-dd HH:mm:ss")',
+      'avatar':'@image("40x40")'
+    })
+  }
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      if(user)
+        resolve([200, user]);
+      else
+        reject({ msg: '用户名密码错误'});
+    }, 200);
+  });
 }

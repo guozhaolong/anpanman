@@ -35,6 +35,7 @@ class AssetDetail extends Component {
 const styles = StyleSheet.create({
   container: {
     padding: 10,
+    height: height,
   },
   inputItem: {
     flexDirection: 'row',
