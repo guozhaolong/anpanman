@@ -8,8 +8,15 @@ const AssetItem = ({ item,dispatch, }) => {
     <View style={styles.item}>
       <Image style={styles.cover} source={{uri: item.cover}} />
       <View style={styles.itemRightContent}>
-        <Text style={styles.title}>{formatStringWithHtml(item.assetnum)}</Text>
-        <Text style={styles.content} numberOfLines={2}>{"型号:"+formatStringWithHtml(item.model)}</Text>
+        <View>
+          <Text style={styles.title}>{formatStringWithHtml(item.assetnum)}</Text>
+          <Text style={styles.content}>{"型号:"+item.model}</Text>
+        </View>
+        <View>
+          <View style={[styles.status,item.status === 1?{backgroundColor: '#1890FF'}:{backgroundColor: '#909399'}]}>
+            <Text style={{color:'#fff',fontSize:12}}>{item.status === 1?"运行中":"已停机"}</Text>
+          </View>
+        </View>
       </View>
     </View>
   </TouchableOpacity>
@@ -61,10 +68,16 @@ const styles = StyleSheet.create({
   },
   itemRightContent: {
     flex: 1,
-    flexDirection: 'column',
+    flexDirection: 'row',
     borderBottomWidth: 1,
     borderBottomColor: '#ddd',
     padding:12,
+    justifyContent: 'space-between',
+  },
+  status: {
+    borderRadius: 10,
+    padding:5,
+    alignItems:'center',
   },
 })
 

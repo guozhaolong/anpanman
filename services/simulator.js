@@ -14,7 +14,7 @@ export async function asset() {
       'createdate': '@date',
       'rfid': '@string(upper,10)',
       'cover': '@image(200x100,@color)',
-      'status|1': [1,2,3]
+      'status|1': [1,2]
     }]
   })
   return new Promise((resolve,reject)=> {
