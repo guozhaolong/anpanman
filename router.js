@@ -128,6 +128,7 @@ function getActiveRouteName(navigationState) {
 
 @connect(({app, router}) => ({app, router}))
 class Router extends PureComponent {
+
   componentWillMount() {
     BackHandler.addEventListener('hardwareBackPress', this.backHandle)
   }
